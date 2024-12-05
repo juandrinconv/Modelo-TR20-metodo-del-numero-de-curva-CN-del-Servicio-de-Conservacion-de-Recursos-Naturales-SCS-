@@ -53,12 +53,12 @@ Esta función implementa el método del hidrograma unitario del SCS adimensional
 
 ### 2.2.1 Parámetros de entrada
 
-#### 2.2.1.1 runoff_volume (volumen) [m³] [volumen para cada paso de tiempo, según el intervalo de tiempo en la cual venga la lluvia rain_depth]
+#### 2.2.1.1 runoff_volume (volumen) [m³] [volumen para cada paso de tiempo, según el intervalo de tiempo en la cual venga la lluvia rain_depth, la cual se introduce en scs_runoff_volume, es decir, en la función descrita en el apartado (2.1)]
 - Tipo: Lista o arreglo de valores numéricos.
 - Significado: Volumen de escorrentía incremental. Es lo que devuelve la función del apartado (1.1), es decir, la función scs_runoff_volume.
 - Rol: Representa el agua que entra al sistema en cada paso de tiempo para ser ruteada.
     
-#### 2.2.1.2 dt (segundos) [s] [debe ser igual al intervalo de tiempo en el cual se registró la lluvia rain_depth, la cual se introduce en scs_runoff_volume, es decir, en la función descrita en el apartado (1.1)]
+#### 2.2.1.2 dt (segundos) [s] [debe ser igual al intervalo de tiempo en el cual se registró la lluvia rain_depth, la cual se introduce en scs_runoff_volume, es decir, en la función descrita en el apartado (2.1)]
 - Tipo: Número (valor único).
 - Significado: Paso de tiempo del análisis.
 - Rol: Define la resolución temporal del cálculo.
@@ -75,12 +75,15 @@ Esta función implementa el método del hidrograma unitario del SCS adimensional
 - Significado: Hidrograma de salida en términos de caudal versus el tiempo (si se adoptan los datos en las unidades recomendadas, el caudal estará en m3/s y el tiempo en minutos)
 
 # 3. Bibliotecas utilizadas
-La información sobre las biblitecas empleadas se encuetran en el archivo requirements.txt
+La información sobre las bibliotecas empleadas se encuetran en el archivo requirements.txt
 
 # 4. Versión de Python utilizada
 Python 3.12.4
 
-# 5. Información sobre los dos ejemplos que se pueden ensayar
+# 5. Información para cuando se vaya a clonar el repositorio 
+Este repositorio se subió con el entorno virtual por defecto de Python, por ende, no es necesario crear por separado dicho entorno antes de clonar el repositorio, sino que simplemente, después de clonar el repositorio, se instalan todas las dependencias en el entorno virtual, de hecho, no es ocioso mencionar que toda la información sobre las dependencias a instalar se encuentran en el archivo requirements.txt
+
+# 6. Información sobre los dos ejemplos que se pueden ensayar
 Existe la información de dos eventos en las carpetas llamadas "Caudales_Precipitaciones_08_10_07" y "Caudales_Precipitaciones_13_10_07", las cuales contienen el registro de caudales y precipitación observada en el campus de la Universidad Nacional de Colombia Sede Bogotá.
 
 En este sentido y, utilizando la información suministrada, se pueden correr perfectamente los dos modelos correspondientes a cada evento, con el fin de que la persona interesada puede apreciar que el código funciona.
