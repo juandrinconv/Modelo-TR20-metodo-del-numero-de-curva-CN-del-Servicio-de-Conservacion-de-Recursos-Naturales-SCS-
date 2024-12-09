@@ -84,6 +84,14 @@ Python 3.12.4
 Este repositorio se subió con el entorno virtual por defecto de Python, por ende, no es necesario crear por separado dicho entorno antes de clonar el repositorio, sino que simplemente, después de clonar el repositorio, se instalan todas las dependencias en el entorno virtual, de hecho, no es ocioso mencionar que toda la información sobre las dependencias a instalar se encuentran en el archivo requirements.txt
 
 # 6. Información sobre los dos ejemplos que se pueden ensayar
-Existe la información de dos eventos en las carpetas llamadas "Caudales_Precipitaciones_08_10_07" y "Caudales_Precipitaciones_13_10_07", las cuales contienen el registro de caudales y precipitación observada en el campus de la Universidad Nacional de Colombia Sede Bogotá.
+Existe la información de dos eventos en las carpetas llamadas "Caudales_Precipitaciones_08_10_07" y "Caudales_Precipitaciones_13_10_07", las cuales contienen el registro de caudales y precipitación observada en el campus de la Universidad Nacional de Colombia Sede Bogotá. Cabe mencionar, que respectivamente los archivos mencionados, como se presentan en este ejemplo, tienen la siguiente estructura:
 
-En este sentido y, utilizando la información suministrada, se pueden correr perfectamente los dos modelos correspondientes a cada evento, con el fin de que la persona interesada puede apreciar que el código funciona.
+Columna           Columna 
+Datos de tiempo   Datos de precipitación medida
+
+Columna           Columna 
+Datos de tiempo   Datos de caudales medidos
+
+Cabe resaltar, que las columnas no tienen encabezado, es decir, la columnas arrancan directamente con los valores en cuestión, sin embargo, en el código donde se encuentran los eventos se añade este encabezado cuando se van a leer datos de entrada.
+
+Por lo demás y, utilizando la información suministrada, se pueden correr perfectamente los dos modelos correspondientes a cada evento, con el fin de que la persona interesada puede apreciar que el código funciona.
