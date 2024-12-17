@@ -10,13 +10,17 @@ results = []
 simulated_hydrographs = []
 
 # Ruta de los archivos de caudal y precipitación observadas
-qobs_path = r"C:\Users\LENOVO\Downloads\Modelo_TR20\Caudales_Precipitaciones_13_10_07\Caudales observados.csv"
-pobs_path = r"C:\Users\LENOVO\Downloads\Modelo_TR20\Caudales_Precipitaciones_13_10_07\Precipitaciones observadas.csv"
+qobs_path = input(
+    "Ingrese la ruta del archivo de caudales observados: ").strip()
+pobs_path = input(
+    "Ingrese la ruta del archivo de precipitación observada: ").strip()
 output_path = r"C:\Users\LENOVO\Downloads\Modelo_TR20\monte_carlo_results.csv"
+montecarlo_path = input(
+    "Si desea usar valores previos de Montecarlo para validación, ingrese la ruta del archivo (o deje vacío para omitir): ").strip()
 
 # Leer datos de entrada
 # Notas:
-# 1. La fechas en el archivo csv deben estar en mm/dd/yy hh:mm
+# 1. La fechas en el archivo csv deben estar en mm/dd/aaaa hh:mm:ss AM/PM
 # 2. Los datos no deben contar con encabezado, es decir, las columnas
 # 3. La primer columna debe almacenar los datos de tiempo, y la segunda columna los datos de caudal obervados o precipitación observada
 qobs_data = pd.read_csv(qobs_path, sep=',', header=None,
@@ -63,14 +67,27 @@ num_simulations = int(input("Ingrese el número de simulaciones: "))
 catchment_area = 0.41  # km2
 dt = 60  # segundos
 
-# Simulación por Montecarlo
+# Simulación por Montecarlo y validación si se requiere
+predefined_values = bool(montecarlo_path)
+if predefined_values:
+    montecarlo_data = pd.read_csv(montecarlo_path)
+    num_simulations = len(montecarlo_data)
+else:
+    num_simulations = num_simulations
+
 for i in range(num_simulations):
-    # Generar parámetros aleatorios
-    CN = np.random.uniform(40, 90)
-    # Lag_time en segundos (4 to 15 minutos)
-    lag_time = np.random.uniform(4 * 60, 15 * 60)
-    # lambda entre 0 and 1.0
-    lambda_val = np.random.uniform(0.0, 1.0)
+    if predefined_values:
+        # Leer parámetros desde el archivo
+        CN = montecarlo_data.loc[i, 'CN']
+        # Lag_time en segundos
+        lag_time = montecarlo_data.loc[i, 'Lag_Time_min'] * 60
+        lambda_val = montecarlo_data.loc[i, 'Lambda']
+    else:
+        # Generar parámetros aleatorios
+        CN = np.random.uniform(40, 90)  # Número de curva entre 40 y 90
+        # Lag_time en segundos (4 to 15 minutos)
+        lag_time = np.random.uniform(4 * 60, 15 * 60)
+        lambda_val = np.random.uniform(0.0, 1.0)  # lambda entre 0 and 1.0
 
     # Calcular el volumen de escorrentía
     runoff_volume = scs_runoff_volume(

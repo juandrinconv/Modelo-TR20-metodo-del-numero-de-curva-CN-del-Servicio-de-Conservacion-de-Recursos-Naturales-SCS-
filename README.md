@@ -95,3 +95,9 @@ Datos de tiempo   Datos de caudales medidos
 Cabe resaltar, que las columnas no tienen encabezado, es decir, la columnas arrancan directamente con los valores en cuestión, sin embargo, en el código donde se encuentran los eventos se añade este encabezado cuando se van a leer datos de entrada.
 
 Por lo demás y, utilizando la información suministrada, se pueden correr perfectamente los dos modelos correspondientes a cada evento, con el fin de que la persona interesada puede apreciar que el código funciona.
+
+# 7. Validación
+Es posible realizar la validación de la calibración del modelo. A continuación, se describe el proceso. 1. Se calibra el modelo, es decir, se obtienen las tres variables en cuestión. 
+2. Se vuelve a correr el modelo, pero esta vez se introduce la serie de caudales y precipitaciones observadas del otro evento a considerar en la validación.
+3. Cuando se solicite y se desee, se introduce la ruta en donde quedó guardado el archivo inicial creado en el proceso del paso uno llamado "monte_carlo_results.csv ". Si no se desea realizar validación, cuando el input requiera dicho archivo, simplemente se da enter para obviar el proceso de validación.
+3.1 Nota: Es pertinente resaltar, que se recomienda cambiarle el nombre al archivo inicial creado llamado "monte_carlo_results.csv ", ya que el proceso de validación creará otro archivo con el mismo nombre, y para que este archivo inicial no se borre, se recomienda cambiarle el nombre para obtener los resultados del evento calibrado, con el evento validado mediante los parámetros hallados en el proceso de calibración.
